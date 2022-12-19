@@ -1,5 +1,7 @@
 # GoLang-Redis-Cluster
 
+![REDİS-CLUSTER](https://user-images.githubusercontent.com/21373505/208536120-958eb6df-9742-4c6b-b4e3-dc607ab5614a.png) 
+
 **Run on docker the redis services**
 ```bash
   docker-compose up -d redis1 redis2 redis3 redis4 redis5 redis6
