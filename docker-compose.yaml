@@ -7,8 +7,6 @@ services:
     restart: always
     ports:
       - 8080:8080
-    networks:
-      - redis-cluster
 
   redis1:
     container_name: redis1
@@ -18,8 +16,6 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
 
   redis2:
     container_name: redis2
@@ -29,8 +25,6 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
 
   redis3:
     container_name: redis3
@@ -40,8 +34,6 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
   
   redis4:
     container_name: redis4
@@ -51,9 +43,7 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
-  
+   
   redis5:
     container_name: redis5
     image: redis:7.0.5
@@ -62,8 +52,6 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
 
   redis6:
     container_name: redis6
@@ -73,40 +61,3 @@ services:
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - redis-cluster
-
-networks:
-  redis-cluster:
-    driver: bridge
-
-
-# version: '3'
-
-# services:
-#   redis-master:
-#     image: redis
-#     command: redis-server --appendonly yes
-#     ports:
-#       - "6379:6379"
-#     networks:
-#       - redis-cluster
-#   redis-slave:
-#     image: redis
-#     command: redis-server --appendonly yes --slaveof redis-master 6379
-#     networks:
-#       - redis-cluster
-#   redis-sentinel:
-#     image: redis
-#     command: redis-server --sentinel
-#     environment:
-#       - SENTINEL_DOWN_AFTER=10000
-#       - SENTINEL_FAILOVER=10000
-#     networks:
-#       - redis-cluster
-
-# networks:
-#   redis-cluster:
-#     driver: bridge
-
-

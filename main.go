@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/go-redis/redis/v9"
 )
@@ -30,6 +29,7 @@ func main() {
 	}
 	fmt.Println("key", val)
 
-	time.Sleep(time.Hour)
+	forever := make(chan bool)
+	<-forever
 
 }
